@@ -13,3 +13,13 @@ Download the release: [Latest Version](https://github.com/eballai/NoAI/releases/
 4. Copy the watermarked files elsewhere and delete the originals.
 
 IMPORTANT: Backup your files!
+
+
+## Background
+
+This project is based on [Medium article](https://medium.com/@steinsfu/stable-diffusion-the-invisible-watermark-in-generated-images-2d68e2ab1241). It uses the open source [Invisible Watermark](https://github.com/ShieldMnt/invisible-watermark) project.
+
+
+## Known Issue
+
+This may not work with all AI art software. This targets Stable Diffusion and offshoots.
