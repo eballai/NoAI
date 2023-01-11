@@ -5,7 +5,7 @@ from imwatermark import WatermarkEncoder
 # Get all the PNG and JPG files in the current directory
 files = [f for f in os.listdir('.') if f.endswith('.png') or f.endswith('.jpg') or f.endswith('.jpeg')]
 
-wm = 'SDV2'
+wm = 'StableDiffusionV1'
 encoder = WatermarkEncoder()
 encoder.set_watermark('bytes', wm.encode('utf-8'))
 
