@@ -3,6 +3,7 @@ import cv2
 from colorama import Fore
 from imwatermark import WatermarkEncoder, WatermarkDecoder
 
+
 def encode(file, encoder, watermark_type):
     print(f":: {Fore.BLUE}Encoding {Fore.MAGENTA}{file}{Fore.RESET}")
 
