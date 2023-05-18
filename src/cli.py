@@ -5,9 +5,9 @@ import argparse
 from imwatermark import WatermarkEncoder, WatermarkDecoder
 from colorama import Fore
 
-from . import tree_utils
-from . import decode
-from . import encode
+from no_ai import tree_utils
+from no_ai import decode
+from no_ai import encode
 
 
 def main():
@@ -40,7 +40,7 @@ def main():
             encode.encode(file, encoder, watermark_type)
             amount_encoded += 1
         if arguments.decode:
-            decode.decode(file, decoder, watermark_type)
+            decode.decode(file, decoder)
             amount_decoded += 1
 
     # To do: Reduce code duplication
