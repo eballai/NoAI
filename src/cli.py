@@ -1,14 +1,13 @@
 #!/usr/bin/env python
 """The command-line interface for NoAI. This script should not be used as a module."""
-import os
 import sys
 import argparse
 from imwatermark import WatermarkEncoder, WatermarkDecoder
 from colorama import Fore
 
-import tree_utils
-from decode import *
-from encode import *
+from . import tree_utils
+from . import decode
+from . import encode
 
 
 def main():
@@ -38,10 +37,10 @@ def main():
 
     for file in tree_utils.branch_images(arguments.directory):
         if arguments.encode:
-            encode(file, encoder, watermark_type)
+            encode.encode(file, encoder, watermark_type)
             amount_encoded += 1
         if arguments.decode:
-            decode(file, decoder, watermark_type)
+            decode.decode(file, decoder, watermark_type)
             amount_decoded += 1
 
     # To do: Reduce code duplication

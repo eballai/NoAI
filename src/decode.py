@@ -1,10 +1,12 @@
-import os
+"""Decode the invisible watermark."""
+
 import cv2
 from colorama import Fore
-from imwatermark import WatermarkEncoder, WatermarkDecoder
 
 
-def decode(file, decoder, watermark_type):
+def decode(file, decoder):
+    """Attempt to decode a watermark (of type `watermark_type`) from the given `file` variable"""
+
     print(f":: {Fore.BLUE}Decoding {Fore.MAGENTA}{file}{Fore.RESET}")
 
     image_file = cv2.imread(file)

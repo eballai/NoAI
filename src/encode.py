@@ -1,10 +1,13 @@
+"""Encode an invisible watermark into your image"""
+
 import os
 import cv2
 from colorama import Fore
-from imwatermark import WatermarkEncoder, WatermarkDecoder
 
 
 def encode(file, encoder, watermark_type):
+    """Encode a watermark (of type `watermark_type`) into a copy of the given file."""
+
     print(f":: {Fore.BLUE}Encoding {Fore.MAGENTA}{file}{Fore.RESET}")
 
     encoder.set_watermark("bytes", watermark_type.encode("utf-8"))
