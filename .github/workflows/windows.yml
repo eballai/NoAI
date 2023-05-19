@@ -2,7 +2,7 @@ name: Build on Windows
 
 on:
   push:
-    branches: [ windows-workflow ]
+    branches: [ main, master ]
 
 env:
   BUILD_TYPE: Release
