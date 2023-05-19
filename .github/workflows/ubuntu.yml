@@ -34,3 +34,4 @@ jobs:
         path: |
           build
           dist
+          docs/LEGAL.md
