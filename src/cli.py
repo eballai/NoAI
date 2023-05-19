@@ -11,7 +11,7 @@ from no_ai import encode
 
 
 def main():
-    """The required entry point for the `setup.py` script/"""
+    """The command-line entry point."""
 
     # This variable determines what AI to watermark for
     watermark_type = "SDV2"  # In this case, Stable Diffusion v2.0
