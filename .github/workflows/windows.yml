@@ -34,4 +34,6 @@ jobs:
         path: |
           build
           dist
+          LICENSE.md
+          README.md
           docs/LEGAL.md
