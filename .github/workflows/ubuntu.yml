@@ -25,4 +25,12 @@ jobs:
 
     - name: Build
       run: |
-        $HOME/.pyenv/bin/pyenv exec $HOME/.pyenv/versions/3.10.10/bin/pyinstaller --onefile src/cli.py
+        $HOME/.pyenv/bin/pyenv exec $HOME/.pyenv/versions/3.10.10/bin/pyinstaller --onefile src/cli.py\
+    
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: python-artifacts
+        path: |
+          build
+          dist
