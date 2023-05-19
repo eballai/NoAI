@@ -1,0 +1,39 @@
+name: Build on Ubuntu
+
+on:
+  push:
+    branches: [ main, master ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  ubuntu-latest:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+    
+    - name: Install dependencies
+      run: |
+        curl https://pyenv.run | bash
+        $HOME/.pyenv/bin/pyenv install 3.10.10
+        $HOME/.pyenv/bin/pyenv exec curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+        $HOME/.pyenv/bin/pyenv exec pip install pyinstaller
+
+    - name: Build
+      run: |
+        $HOME/.pyenv/bin/pyenv exec $HOME/.pyenv/versions/3.10.10/bin/pyinstaller --onefile src/cli.py\
+    
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: python-artifacts
+        path: |
+          build
+          dist
+          LICENSE.md
+          README.md
+          docs/LEGAL.md

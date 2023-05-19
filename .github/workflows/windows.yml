@@ -1,0 +1,39 @@
+name: Build on Windows
+
+on:
+  push:
+    branches: [ main, master ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  windows-latest:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+    
+    - name: Install dependencies
+      run: |
+        Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
+        C:\Users\runneradmin\.pyenv\pyenv-win\bin\pyenv.bat install 3.10.10
+        C:\Users\runneradmin\.pyenv\pyenv-win\bin\pyenv.bat exec curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+        C:\Users\runneradmin\.pyenv\pyenv-win\bin\pyenv.bat exec pip install pyinstaller
+
+    - name: Build
+      run: |
+        C:\Users\runneradmin\.pyenv\pyenv-win\bin\pyenv.bat exec pyinstaller --onefile src/cli.py\
+    
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: python-artifacts
+        path: |
+          build
+          dist
+          LICENSE.md
+          README.md
+          docs/LEGAL.md
